@@ -1,5 +1,5 @@
 <ul class="list-group">
-    <a href="" class="list-group-item" routerLink="{{ruta.path}}" *ngFor="let ruta of rutas">
+    <a href="" class="list-group-item" [routerLink]="ruta.path" *ngFor="let ruta of rutas">
         {{ruta.name}}
     </a>
 </ul>

@@ -1,0 +1,20 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-title text-capitalize>Componentes</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+    <ion-list>
+        <ion-item [routerLink]="componente.redirectTo" detail *ngFor="let componente of componentes">
+            <ion-icon slot="start" [name]="componente.icon"></ion-icon>
+            <ion-label>
+                {{componente.name}}
+            </ion-label>
+        </ion-item>
+
+    </ion-list>
+
+</ion-content>
