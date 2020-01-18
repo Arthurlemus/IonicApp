@@ -30,6 +30,18 @@ const routes: Routes = [
     path: 'check',
     loadChildren: () => import('./pages/check/check.module').then( m => m.CheckPageModule)
   },
+  {
+    path: 'date-time',
+    loadChildren: () => import('./pages/date-time/date-time.module').then( m => m.DateTimePageModule)
+  },
+  {
+    path: 'fab',
+    loadChildren: () => import('./pages/fab/fab.module').then( m => m.FabPageModule)
+  },
+  {
+    path: 'grid',
+    loadChildren: () => import('./pages/grid/grid.module').then( m => m.GridPageModule)
+  },
 
 ];
 

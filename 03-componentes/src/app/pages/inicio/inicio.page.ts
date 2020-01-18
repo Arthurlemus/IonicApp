@@ -13,7 +13,10 @@ export class InicioPage implements OnInit {
     {icon: 'beaker', name: 'Avatar', redirectTo: '/avatar'},
     {icon: 'radio-button-on', name: 'Botones y Router', redirectTo: '/botones'},
     {icon: 'card', name: 'Cards', redirectTo: '/card'},
-    {icon: 'checkmark-circle-outline', name: 'Checks', redirectTo: '/check'}
+    {icon: 'checkmark-circle-outline', name: 'Checks', redirectTo: '/check'},
+    {icon: 'calendar', name: 'DateTimes', redirectTo: '/date-time'},
+    {icon: 'car', name: 'Fabs', redirectTo: '/fab'},
+    {icon: 'grid', name: 'Grid - Rows', redirectTo: '/grid'}
   ];
 
   constructor() { }
