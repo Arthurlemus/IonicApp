@@ -20,6 +20,7 @@ export class InputPage implements OnInit {
   
   onSubmitTemplate() {
     console.log('Form Submit');
+    console.log(this.usuario);
   }
 
 }
