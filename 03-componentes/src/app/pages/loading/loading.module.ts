@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ListPageRoutingModule } from './list-routing.module';
+import { LoadingPageRoutingModule } from './loading-routing.module';
 
-import { ListPage } from './list.page';
+import { LoadingPage } from './loading.page';
 import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ComponentsModule } from '../../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ListPageRoutingModule,
+    LoadingPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [ListPage]
+  declarations: [LoadingPage]
 })
-export class ListPageModule {}
+export class LoadingPageModule {}
