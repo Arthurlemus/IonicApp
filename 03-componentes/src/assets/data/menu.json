@@ -14,5 +14,6 @@
     { "icon": "reorder", "name": "Listas - Reorder", "redirectTo": "/list-reorder" },
     { "icon": "refresh-circle", "name": "Loading", "redirectTo": "/loading" },
     { "icon": "phone-portrait", "name": "Modal", "redirectTo": "/modal" },
-    { "icon": "tablet-portrait", "name": "PopOver", "redirectTo": "/popover" }
+    { "icon": "tablet-portrait", "name": "PopOver", "redirectTo": "/popover" },
+    { "icon": "code-working", "name": "Pogress Bar y Range", "redirectTo": "/progress-bar" }
 ]
