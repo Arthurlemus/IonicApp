@@ -15,5 +15,8 @@
     { "icon": "refresh-circle", "name": "Loading", "redirectTo": "/loading" },
     { "icon": "phone-portrait", "name": "Modal", "redirectTo": "/modal" },
     { "icon": "tablet-portrait", "name": "PopOver", "redirectTo": "/popover" },
-    { "icon": "code-working", "name": "Pogress Bar y Range", "redirectTo": "/progress-bar" }
+    { "icon": "code-working", "name": "Pogress Bar y Range", "redirectTo": "/progress-bar" },
+    { "icon": "arrow-round-down", "name": "Refresher", "redirectTo": "/refresher" },
+    { "icon": "search", "name": "Search Bar", "redirectTo": "/searchbar" },
+    { "icon": "copy", "name": "Segment", "redirectTo": "/segment" }
 ]
