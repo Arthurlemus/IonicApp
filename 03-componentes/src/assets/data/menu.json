@@ -18,5 +18,7 @@
     { "icon": "code-working", "name": "Pogress Bar y Range", "redirectTo": "/progress-bar" },
     { "icon": "arrow-round-down", "name": "Refresher", "redirectTo": "/refresher" },
     { "icon": "search", "name": "Search Bar", "redirectTo": "/searchbar" },
-    { "icon": "copy", "name": "Segment", "redirectTo": "/segment" }
+    { "icon": "copy", "name": "Segment", "redirectTo": "/segment" },
+    { "icon": "albums", "name": "Slides", "redirectTo": "/slides" },
+    { "icon": "cog", "name": "Tabs", "redirectTo": "/tabs/account" }
 ]
