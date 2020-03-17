@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
+  categorias = ['business', 'entertainment', 'eneral ', 'ealth ', 'cience', 'sports', 'technology'];
   constructor() {}
 
 }
