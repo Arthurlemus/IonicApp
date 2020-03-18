@@ -1,3 +1,11 @@
 ion-content ion-toolbar {
-  --background: translucent;
+    --background: translucent;
+}
+
+ion-segment-button {
+    color: white !important;
+}
+
+.segment-button-checked {
+    color: var(--ion-color-primary);
 }
