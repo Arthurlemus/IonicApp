@@ -3,6 +3,7 @@ import { Article } from '../../interfaces/interfaces';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { DatalocalService } from '../../services/datalocal.service';
 @Component({
   selector: 'app-noticia',
   templateUrl: './noticia.component.html',
@@ -11,17 +12,44 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 export class NoticiaComponent implements OnInit {
  @Input() noticia: Article;
  @Input() index: number;
+ @Input() enFavoritos: boolean;
+
 
  constructor(private iab: InAppBrowser, private actionSheetCtrl: ActionSheetController, 
-             private socialSharing: SocialSharing) { }
+             private socialSharing: SocialSharing, private datalocalService: DatalocalService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+   
+  }
 
   abrirNoticia() {
       this.iab.create(this.noticia.url, '_system');
   }
 
   async lanzarMenu() {
+    
+    let agregarBorrarFavorito;
+
+    if (this.enFavoritos){
+      agregarBorrarFavorito = {
+        text: 'Borrar Favorito',
+        icon: 'trash',
+        cssClass: 'action-dark',
+        handler: () => {
+           this.datalocalService.borrarNoticia(this.noticia);
+        }
+      };
+    } else {
+      agregarBorrarFavorito = {
+        text: 'Favorito',
+        icon: 'heart',
+        cssClass: 'action-dark',
+        handler: () => {
+          this.datalocalService.guardarFavoritos(this.noticia);
+        }
+      };
+    }
+
     const sheet = await this.actionSheetCtrl.create({
       header: 'Albums',
       buttons: [{
@@ -32,14 +60,9 @@ export class NoticiaComponent implements OnInit {
         handler: () => {
           this.socialSharing.share(this.noticia.title, this.noticia.source.name, '', this.noticia.url);
         }
-      }, {
-        text: 'Favorite',
-        icon: 'heart',
-        cssClass: 'action-dark',
-        handler: () => {
-          console.log('Favorite clicked');
-        }
-      }, {
+      },
+        agregarBorrarFavorito
+      , {
         text: 'Cancelar',
         icon: 'close',
         role: 'cancel',
