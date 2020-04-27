@@ -10,7 +10,7 @@ export class ImagenPipe implements PipeTransform {
 
   transform(img: string, size= 'w500'): string {
 
-    if(!img) {
+    if (!img) {
        return './assets/no-imagen.jpg';
      }
 

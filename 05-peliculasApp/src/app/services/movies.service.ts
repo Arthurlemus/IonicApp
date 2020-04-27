@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RespuestaMDB, PeliculaDetalle, RespuestaActores } from '../interfaces/interfaces';
+import { RespuestaMDB, PeliculaDetalle, RespuestaActores, Actores, Pelicula } from '../interfaces/interfaces';
 import { environment } from '../../environments/environment';
 
 
@@ -12,9 +12,10 @@ const apiKey = environment.apiKey;
   providedIn: 'root'
 })
 export class MoviesService {
- 
+
   private popularesPage = 0;
-  
+  private buscarPage = 0;
+
   constructor(private http: HttpClient) { }
 
   // ─────────────────────────────────────────────────────────────────────────────
@@ -49,15 +50,21 @@ export class MoviesService {
     this.popularesPage ++;
     return this.ejecutarQuery<RespuestaMDB>(`/discover/movie?sort_by=populary.desc&page=${this.popularesPage}`);
   }
-  
+
 // ─────────────────────────────────────────────────────────────────────────────
   getPeliculaDetalle(id: string) {
     return this.ejecutarQuery<PeliculaDetalle>(`/movie/${id}?a=1`);
   }
-  
+
 // ─────────────────────────────────────────────────────────────────────────────
   getActoresPelicula(id: string) {
     return this.ejecutarQuery<RespuestaActores>(`/movie/${id}/credits?a=1`);
+  }
+  
+// ─────────────────────────────────────────────────────────────────────────────
+  buscarPelicula(texto: string) {
+    this.buscarPage ++;
+    return this.ejecutarQuery<RespuestaMDB>(`/search/movie?query=${texto}&page=${this.buscarPage}&include_adult=true`);
   }
 }
 
