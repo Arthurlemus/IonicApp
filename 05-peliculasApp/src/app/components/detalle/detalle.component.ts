@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MoviesService } from '../../services/movies.service';
 import { PeliculaDetalle, Actores } from '../../interfaces/interfaces';
+import { DataLocalService } from '../../services/data-local.service';
 
 @Component({
   selector: 'app-detalle',
@@ -13,16 +14,19 @@ export class DetalleComponent implements OnInit {
   pelicula: PeliculaDetalle = {};
   actores: Actores[] = [];
   caracteres = 150;
+  existe: boolean;
   slideOptActores = {
     slidesPerView: 3.3,
     freeMode: true,
     spaceBetween: -5
   };
 
-  constructor(private modalCtrl: ModalController, private moviesService: MoviesService) { }
+  constructor(private modalCtrl: ModalController, private moviesService: MoviesService, 
+              private dataLocal: DataLocalService) { }
 
   // ─────────────────────────────────────────────────────────────────────────────
-  ngOnInit() {
+  async ngOnInit() {
+      this.existe = await this.dataLocal.existePelicula(this.id);
       this.getPeliculaDetalle();
       this.getActoresPelicula();
   }
@@ -35,7 +39,6 @@ export class DetalleComponent implements OnInit {
 // ─────────────────────────────────────────────────────────────────────────────
   getPeliculaDetalle() {
     this.moviesService.getPeliculaDetalle(this.id).subscribe(resp => {
-      console.log(resp);
       this.pelicula = resp;
     });
   }
@@ -43,11 +46,13 @@ export class DetalleComponent implements OnInit {
 // ─────────────────────────────────────────────────────────────────────────────
   getActoresPelicula() {
     this.moviesService.getActoresPelicula(this.id).subscribe(resp => {
-        console.log('Actoressss', resp);
         this.actores = resp.cast;
     });
   }
 
 // ─────────────────────────────────────────────────────────────────────────────
-  favorito() {}
+  async favorito() {
+    await  this.dataLocal.guardarPelicula(this.pelicula);
+    this.existe = await this.dataLocal.existePelicula(this.id);
+  }
 }
