@@ -13,7 +13,18 @@ const routes: Routes = [
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        children: [ 
+        {
+          path: 'mapa/:geo',
+          loadChildren: () => import('../mapa/mapa.module').then(m => m.MapaPageModule)
+        },
+        {
+          path: '',
+          loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        },
+        {path: '**', redirectTo: '/tabs/tab2', pathMatch: 'full'}
+      ]
+
       },
       {
         path: '',
