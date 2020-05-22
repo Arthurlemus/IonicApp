@@ -1,3 +1,3 @@
-export default Token {
+export default class Token {
     //
-}
+};
