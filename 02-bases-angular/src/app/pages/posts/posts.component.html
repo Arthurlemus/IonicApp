@@ -1,0 +1,5 @@
+<h2>POST</h2>
+
+<ul class="list-group">
+    <app-post [mensaje]="msj" *ngFor="let msj of mensajes |async" (mensajeSelect)="seleccionado($event)"></app-post>
+</ul>

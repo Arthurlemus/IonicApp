@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../services/data.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-post',
@@ -8,17 +7,16 @@ import { DataService } from '../../../services/data.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private dataService: DataService) { 
-    this.getPosts();
-  }
+  @Input() mensaje: any;
+  @Output() mensajeSelect = new EventEmitter<number>();
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  getPosts(): void{
-    this.dataService.getPost().subscribe(post => {
-      console.log(post);
-    });
+  clickPost(): void{
+    this.mensajeSelect.emit(this.mensaje.id);
   }
 
 }
