@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuInterface } from '../../interface/menu.interface';
+import { DataService } from '../../services/data.service';
+import { Observable } from 'rxjs';
 
-interface Componente{
-  icon: string;
-  name: string;
-  redirecTo: string;
-}
 
 @Component({
   selector: 'app-inicio',
@@ -12,81 +10,13 @@ interface Componente{
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-  componentes: Componente[] = [
-    {
-      icon: 'american-football-outline',
-      name: 'action sheet',
-      redirecTo: '/action-sheet'
-    },
-    {
-      icon: 'alert-circle-outline',
-      name: 'alert',
-      redirecTo: '/alert'
-    },
-    {
-      icon: 'person-circle-outline',
-      name: 'Avatar',
-      redirecTo: '/avatar'
-    },
-    {
-      icon: 'radio-button-on-outline',
-      name: 'Buttons',
-      redirecTo: '/button'
-    },
-    {
-      icon: 'card-outline',
-      name: 'Card',
-      redirecTo: '/card'
-    },
-    {
-      icon: 'checkmark-circle-outline',
-      name: 'Checks',
-      redirecTo: '/check'
-    },
-    {
-      icon: 'calendar-outline',
-      name: 'Datetime',
-      redirecTo: '/date-time'
-    },
-    {
-      icon: 'car-outline',
-      name: 'Fab',
-      redirecTo: '/fab'
-    },
-    {
-      icon: 'grid-outline',
-      name: 'Grid',
-      redirecTo: '/grid'
-    },
-    {
-      icon: 'infinite-outline',
-      name: 'Infinite',
-      redirecTo: '/infinite'
-    },
-    {
-      icon: 'hammer-outline',
-      name: 'Input Form',
-      redirecTo: '/input'
-    },
-    {
-      icon: 'list-outline',
-      name: 'List - Sliding',
-      redirecTo: '/list'
-    },
-    {
-      icon: 'reorder-three-outline',
-      name: 'List - Reorder',
-      redirecTo: '/list-reorder'
-    },
-    {
-      icon: 'refresh-outline',
-      name: 'Loading',
-      redirecTo: '/loading'
-    }
-  ];
-  constructor() { }
+  
+  componentes: Observable<MenuInterface[]>
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.componentes = this.dataService.getMenu();
   }
 
 }
