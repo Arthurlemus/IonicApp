@@ -77,5 +77,15 @@
         "icon": "tablet-portrait-outline",
         "name": "Popover",
         "redirecTo": "/popover"
+    },
+    {
+        "icon": "code-working-outline",
+        "name": "ProgressBar",
+        "redirecTo": "/progress"
+    },
+    {
+        "icon": "arrow-down-circle-outline",
+        "name": "Refresher",
+        "redirecTo": "/refresher"
     }
 ]
