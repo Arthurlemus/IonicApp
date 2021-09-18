@@ -1,0 +1,26 @@
+<ion-content>
+
+    <ion-slides pager="ios" class="slide-full">
+        <ion-slide *ngFor="let slide of slides">
+
+            <ion-card>
+                <img [src]="slide.img" [alt]="slide.titulo" class="slide-image">
+
+                <ion-card-header>
+                    <ion-card-subtitle>{{slide.titulo}}</ion-card-subtitle>
+                </ion-card-header>
+
+                <ion-card-content>
+                    {{slide.desc}}
+                </ion-card-content>
+            </ion-card>
+
+        </ion-slide>
+        <ion-slide>
+            <ion-button (click)="regresar()" expand="block" fill="clear" shape="round">
+                Finalizar
+            </ion-button>
+        </ion-slide>
+    </ion-slides>
+
+</ion-content>

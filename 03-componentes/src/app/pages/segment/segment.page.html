@@ -26,7 +26,7 @@
 <ion-content>
 
     <ion-list>
-        <ion-item *ngFor="let heroe of  (heroes |async) |filtro: txtselect : 'publisher'">
+        <ion-item *ngFor="let heroe of  (heroes |async) |filtro: txtselect : 'publisher'" class="animate__animated animate__fadeIn">
             <ion-label>
                 <h3>{{heroe.superhero}} <small>{{heroe.alter_ego}}</small></h3>
                 <p>{{heroe.first_appearance}}</p>
