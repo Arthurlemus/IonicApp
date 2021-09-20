@@ -1,0 +1,6 @@
+{
+	"appId": "io.components.starter",
+	"appName": "componentes",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
