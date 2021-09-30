@@ -13,14 +13,17 @@ export class Tab1Page implements OnInit {
 
   constructor(private ns: NoticiasService) {}
 
+// ─────────────────────────────────────────────────────────────────────────────
   ngOnInit(){
     this.cargarNoticias();
   }
 
+// ─────────────────────────────────────────────────────────────────────────────
   loadData(event){
     this.cargarNoticias(event);
   }
-
+  
+// ─────────────────────────────────────────────────────────────────────────────
   cargarNoticias(event?){
     this.ns.getTopHeadLines().subscribe(resp =>{
       
