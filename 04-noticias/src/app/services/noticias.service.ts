@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { RespuestaTopHeadLines } from '../pages/interfaces/interface';
 import { environment } from '../../environments/environment';
+import { Storage } from '@ionic/storage';
   
 const apiKey = environment.apiKey;
 const apiUrl = environment.apiUrl;
@@ -19,8 +20,9 @@ export class NoticiasService {
   categoriaActual = '';
   paginaActual = 0;
   
-  constructor(private http: HttpClient) { }
+   constructor(private http: HttpClient, private storage: Storage) {
 
+   }
 // ─────────────────────────────────────────────────────────────────────────────  
   private ejecutarQuery<T>(query: string){
       query = apiUrl + query;

@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Article } from '../../pages/interfaces/interface';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ActionSheetController } from '@ionic/angular';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { DataLocalService } from '../../services/data-local.service';
 
 @Component({
   selector: 'app-noticia',
@@ -13,7 +15,8 @@ export class NoticiaComponent implements OnInit {
   @Input() noticia: Article;
   @Input() num: number;
 
-  constructor(private iab: InAppBrowser, private actionCtrl: ActionSheetController) { }
+  constructor(private iab: InAppBrowser, private actionCtrl: ActionSheetController, private socialSharing: SocialSharing,
+    private dataLocalService: DataLocalService) { }
 
   ngOnInit() {}
 
@@ -26,21 +29,21 @@ export class NoticiaComponent implements OnInit {
     const actionSheet = await this.actionCtrl.create({
       header: 'Albums',
       buttons: [{
-        text: 'Share',
+        text: 'Compartir',
         icon: 'share',
         cssClass:'action-dark',
         handler: () => {
-          console.log('Share clicked');
+          this.socialSharing.share(this.noticia.title, this.noticia.source.name, null, this.noticia.url);
         }
       },{
-        text: 'Favorite',
+        text: 'Favoritos',
         icon: 'heart',
         cssClass:'action-dark',
         handler: () => {
-          console.log('Favorite clicked');
+          this.dataLocalService.guardarNoticia(this.noticia);
         }
       }, {
-        text: 'Cancel',
+        text: 'Cancelar',
         icon: 'close',
         role: 'cancel',
         cssClass:'action-dark',
@@ -51,8 +54,8 @@ export class NoticiaComponent implements OnInit {
     });
     await actionSheet.present();
 
-    const { role } = await actionSheet.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
+    //const { role } = await actionSheet.onDidDismiss();
+    //console.log('onDidDismiss resolved with role', role);
   }
 
 }
