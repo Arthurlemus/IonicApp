@@ -10,25 +10,24 @@ import { NoticiasService } from '../../services/noticias.service';
 })
 export class Tab3Page implements OnInit {
   
-  noticias: Article[] = [];
   slideOpts = {
     allowSlidePrev: false,
     allowSlideNext: false
   };
-  constructor(private dataLocalService: DataLocalService, private ns: NoticiasService) {
+  constructor(public dataLocalService: DataLocalService, private ns: NoticiasService) {
      
   }
   
   ngOnInit(){
-    this.cargarFavoritos();
+    this.dataLocalService.cargarFavoritos();
     
   }
   
-  async cargarFavoritos(){
-    await this.dataLocalService.cargarFavoritos().then(() => {
-       this.noticias = this.dataLocalService.noticias;
-     });
-   }
+  // async cargarFavoritos(){
+  //   await this.dataLocalService.cargarFavoritos().then(() => {
+  //      this.noticias = this.dataLocalService.noticias;
+  //    });
+  //  }
 
 
   

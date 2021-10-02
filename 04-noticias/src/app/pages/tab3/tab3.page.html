@@ -8,11 +8,11 @@
 
 <ion-content [fullscreen]="true" color="dark">
 
-    <ion-slides *ngIf="noticias.length === 0" [options]="slideOpts">
+    <ion-slides *ngIf="dataLocalService.noticias.length === 0" [options]="slideOpts">
         <ion-slide>
             <ion-label>No hay Favoritos</ion-label>
         </ion-slide>
     </ion-slides>
 
-    <app-noticias [noticias]="noticias" *ngIf="noticias.length > 0"></app-noticias>
+    <app-noticias [enFavoritos]="true" [noticias]="dataLocalService.noticias" *ngIf="dataLocalService.noticias.length > 0"></app-noticias>
 </ion-content>
