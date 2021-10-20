@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Article } from '../../pages/interfaces/interface';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, ToastController } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { DataLocalService } from '../../services/data-local.service';
 
@@ -17,7 +17,7 @@ export class NoticiaComponent implements OnInit {
   @Input() enFavoritos: boolean;
 
   constructor(private iab: InAppBrowser, private actionCtrl: ActionSheetController, private socialSharing: SocialSharing,
-    private dataLocalService: DataLocalService) { }
+    private dataLocalService: DataLocalService, private  toastCtrl: ToastController) { }
 
   ngOnInit() {}
 
@@ -78,6 +78,10 @@ export class NoticiaComponent implements OnInit {
     //const { role } = await actionSheet.onDidDismiss();
     //console.log('onDidDismiss resolved with role', role);
   }
+
+
+
+
 
 }
 
