@@ -1,8 +1,13 @@
-import mongoose, {ConnectOptions} from 'mongoose';
+import mongoose from 'mongoose';
 import Server  from './classes/server';
 import usuarioRoutes from './routes/usuario';
+import bodyParser from 'body-parser';
 
 const server = new Server();
+
+//Body Parser
+server.app.use(bodyParser.urlencoded({extended: true}));
+server.app.use(bodyParser.json());
 
 // Rutas de App
 server.app.use('/user', usuarioRoutes);
