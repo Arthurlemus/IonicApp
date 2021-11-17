@@ -32,3 +32,5 @@ npm-debug.log*
 .DS_Store
 .DS_Store
 08-fotosgram-server/node_modules
+fotosgram_backend/node_modules
+.DS_Store
