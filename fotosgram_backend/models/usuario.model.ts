@@ -1,18 +1,19 @@
 import { Document, model, Schema } from "mongoose";
+import bcrypt from 'bcrypt';
 
 const usuarioShema = new Schema({
-    nombre: {
+    nombre:{
         type: String,
         required: [true, 'El Nombre es Necesario']
-    },
-    avatar: {
-        type: String,
-        default: 'av-1.png'
     },
     email: {
         type: String,
         unique: true,
         required: [true, 'El Correo es Necesario']
+    },
+    avatar: {
+        type: String,
+        default: 'av-1.png'
     },
     password:{
         type: String,
@@ -20,11 +21,21 @@ const usuarioShema = new Schema({
     }
 });
 
+usuarioShema.method('compararPassword', function(password: string = ''): boolean{
+   if(bcrypt.compareSync(password, this.password)){
+       return true;
+   }else{
+       return false;
+   }
+});
+
 interface IUsuario extends Document{
     nombre: string;
-    avatar: string;
     email: string;
+    avatar: string;
     password: string;
+    compararPassword(password:string): boolean;
+
 }
 
 export const Usuario = model<IUsuario>('Usuario', usuarioShema);
